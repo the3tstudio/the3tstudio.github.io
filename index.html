@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0e0e12" />
+  <meta name="description" content="The 3T Studio — Clean code, strong architectures. Official links, social profiles, and announcement channels." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="The 3T Studio" />
+  <meta property="og:description" content="Clean code, strong architectures. Official links, social profiles, and announcement channels." />
+  <meta property="og:image" content="https://customer-assets-0z36b82j.emergentagent.net/job_threet-studio--19t27pkr/artifacts/c243847bd6005de8_The3TStudioLogo.png" />
+  <link rel="icon" type="image/png" href="https://customer-assets-0z36b82j.emergentagent.net/job_threet-studio--19t27pkr/artifacts/c243847bd6005de8_The3TStudioLogo.png" />
+  <title>The 3T Studio</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['"Space Grotesk"', 'sans-serif'],
+            body: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            ink: '#0e0e12',
+            panel: '#16161d',
+            edge: '#26262f',
+            mute: '#8a8a97',
+            accent: '#2f6bff',
+            ytred: '#cc0000',
+            bipturquoise: '#00a8e8',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(14px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            pulseSlow: {
+              '0%, 100%': { opacity: '1' },
+              '50%': { opacity: '0.4' },
+            }
+          },
+          animation: {
+            fadeUp: 'fadeUp 0.5s ease forwards',
+            pulseSlow: 'pulseSlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; }
+    ::selection { background: #2f6bff; color: #ffffff; }
+
+    .glow::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(600px 300px at 50% -5%, rgba(47,107,255,0.18), transparent 70%),
+        radial-gradient(500px 400px at 85% 110%, rgba(47,107,255,0.08), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .tab-btn {
+      color: #b4b4c2;
+    }
+
+    .tab-btn.active {
+      background: #2f6bff;
+      color: #ffffff;
+    }
+
+    .link-card {
+      transition: transform .18s ease, border-color .18s ease, background-color .18s ease;
+    }
+    .link-card:hover {
+      transform: translateY(-2px);
+      border-color: #2f6bff;
+      background-color: #1c1c25;
+    }
+    .link-card:hover .arrow { transform: translateX(3px); opacity: 1; }
+    .arrow { transition: transform .18s ease, opacity .18s ease; opacity: .4; }
+
+    .stagger > * { opacity: 0; animation: fadeUp .5s ease forwards; }
+  </style>
+</head>
+
+<body class="font-body bg-ink text-white min-h-screen glow">
+
+  <main class="relative z-10 mx-auto flex min-h-screen w-full max-w-xl flex-col items-center px-5 py-12 sm:py-16">
+
+    <div class="animate-fadeUp flex flex-col items-center text-center">
+      <div class="relative">
+        <div class="absolute inset-0 rounded-full bg-accent/20 blur-xl"></div>
+        <div class="relative h-28 w-28 overflow-hidden rounded-full border border-edge bg-panel p-1.5 shadow-2xl ring-1 ring-white/5 sm:h-32 sm:w-32">
+          <img src="https://customer-assets-0z36b82j.emergentagent.net/job_threet-studio--19t27pkr/artifacts/c243847bd6005de8_The3TStudioLogo.png"
+            alt="The 3T Studio logo" class="h-full w-full rounded-full object-cover" />
+        </div>
+      </div>
+
+      <div class="mt-4 inline-flex items-center gap-2 rounded-full border border-edge bg-panel px-3 py-1 text-xs text-mute">
+        <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulseSlow"></span>
+        <span>by The 3T Studio</span>
+      </div>
+
+      <h1 class="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">The 3T Studio</h1>
+      <p class="mt-2 text-sm text-mute">Clean code, strong architectures.</p>
+    </div>
+
+    <nav class="mt-8 w-full">
+      <div class="mx-auto flex w-full max-w-xs items-center gap-1 rounded-full border border-edge bg-panel p-1">
+        <button data-testid="tab-home-button" onclick="switchTab('home')"
+          class="tab-btn active flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors"
+          id="tab-home">Home</button>
+        <button data-testid="tab-about-button" onclick="switchTab('about')"
+          class="tab-btn flex-1 rounded-full px-4 py-2 text-sm font-medium transition-colors"
+          id="tab-about">About</button>
+      </div>
+    </nav>
+
+    <section data-testid="panel-home" id="panel-home" class="mt-9 w-full stagger">
+
+      <div class="w-full" style="animation-delay:.05s">
+        <h2 class="mb-3 flex items-center gap-2 px-1 text-xs font-semibold uppercase tracking-[0.18em] text-mute">
+          <span class="h-px w-4 bg-edge"></span> Main Accounts
+        </h2>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://github.com/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-github" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-white"><i class="fa-brands fa-github"></i></span>
+            <span class="flex-1 font-medium">GitHub</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://linkedin.com/in/aliemirsuci" target="_blank" rel="noopener noreferrer" data-testid="link-linkedin" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#0a66c2]"><i class="fa-brands fa-linkedin-in"></i></span>
+            <span class="flex-1 font-medium">LinkedIn</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-7 w-full" style="animation-delay:.12s">
+        <h2 class="mb-3 flex items-center gap-2 px-1 text-xs font-semibold uppercase tracking-[0.18em] text-mute">
+          <span class="h-px w-4 bg-edge"></span> Social Accounts
+        </h2>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://www.instagram.com/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-instagram" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#e1306c]"><i class="fa-brands fa-instagram"></i></span>
+            <span class="flex-1 font-medium">Instagram</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://www.facebook.com/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-facebook" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#1877f2]"><i class="fa-brands fa-facebook-f"></i></span>
+            <span class="flex-1 font-medium">Facebook</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://www.youtube.com/@the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-youtube" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-ytred"><i class="fa-brands fa-youtube"></i></span>
+            <span class="flex-1 font-medium">YouTube</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://pin.it/5pq8euCTD" target="_blank" rel="noopener noreferrer" data-testid="link-pinterest" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#e60023]"><i class="fa-brands fa-pinterest"></i></span>
+            <span class="flex-1 font-medium">Pinterest</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://www.reddit.com/u/the3tstudio/s/Z6QJJ2Tpp4" target="_blank" rel="noopener noreferrer" data-testid="link-reddit" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#ff4500]"><i class="fa-brands fa-reddit-alien"></i></span>
+            <span class="flex-1 font-medium">Reddit</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://x.com/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-x" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-white"><i class="fa-brands fa-x-twitter"></i></span>
+            <span class="flex-1 font-medium">X (Twitter)</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://www.threads.com/@the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-threads" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-white"><i class="fa-brands fa-threads"></i></span>
+            <span class="flex-1 font-medium">Threads</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://nsosyal.com/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-nsocial" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-base text-accent"><i class="fa-solid fa-globe"></i></span>
+            <span class="flex-1 font-medium">NSosyal</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-7 w-full" style="animation-delay:.19s">
+        <h2 class="mb-3 flex items-center gap-2 px-1 text-xs font-semibold uppercase tracking-[0.18em] text-mute">
+          <span class="h-px w-4 bg-edge"></span> Announcement Channels
+        </h2>
+        <div class="flex flex-col gap-2.5">
+          <a href="https://t.me/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-telegram" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#2aabee]"><i class="fa-brands fa-telegram"></i></span>
+            <span class="flex-1 font-medium">Telegram</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://whatsapp.com/channel/0029VbDPHJv0wajmsHp9Vo0V" target="_blank" rel="noopener noreferrer" data-testid="link-whatsapp" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-[#25d366]"><i class="fa-brands fa-whatsapp"></i></span>
+            <span class="flex-1 font-medium">WhatsApp</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+          <a href="https://bip.ai/join/the3tstudio" target="_blank" rel="noopener noreferrer" data-testid="link-bip" class="link-card group flex items-center gap-4 rounded-2xl border border-edge bg-panel px-4 py-3.5">
+            <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-ink text-lg text-bipturquoise"><i class="fa-solid fa-comments"></i></span>
+            <span class="flex-1 font-medium">BiP</span>
+            <i class="fa-solid fa-arrow-right arrow text-sm text-accent"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section data-testid="panel-about" id="panel-about" class="mt-10 hidden w-full">
+      <div class="flex flex-col items-center rounded-3xl border border-edge bg-panel px-6 py-12 text-center">
+        <span class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl border border-edge bg-ink text-accent">
+          <i class="fa-solid fa-code"></i>
+        </span>
+        <h2 class="font-display text-3xl font-semibold tracking-tight sm:text-4xl">The 3T Studio</h2>
+        <p class="mt-3 max-w-sm text-base text-mute">Clean code, strong architectures.</p>
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+          <a href="mailto:the3tstudio@outlook.com" data-testid="about-email-link"
+            class="link-card inline-flex items-center gap-3 rounded-full border border-edge bg-ink px-5 py-3 text-sm font-medium">
+            <i class="fa-solid fa-envelope text-accent"></i>
+            the3tstudio@outlook.com
+          </a>
+          <button type="button" onclick="copyEmail(this)" data-testid="about-copy-email"
+            class="link-card inline-flex items-center gap-2 rounded-full border border-edge bg-ink px-4 py-3 text-sm font-medium text-[#b4b4c2]">
+            <i class="fa-regular fa-copy text-accent"></i>
+            <span>Copy</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="mt-auto pt-12 text-center text-xs text-mute">
+      © 2026 The 3T Studio
+    </footer>
+  </main>
+
+  <script>
+    function switchTab(tab) {
+      const panels = { home: document.getElementById('panel-home'), about: document.getElementById('panel-about') };
+      const tabs = { home: document.getElementById('tab-home'), about: document.getElementById('tab-about') };
+
+      Object.keys(panels).forEach((key) => {
+        const isActive = key === tab;
+        panels[key].classList.toggle('hidden', !isActive);
+        tabs[key].classList.toggle('active', isActive);
+      });
+
+      if (tab === 'home') {
+        document.querySelectorAll('#panel-home .stagger > *, #panel-home > *').forEach((el) => {
+          el.style.animation = 'none';
+          void el.offsetWidth;
+          el.style.animation = '';
+        });
+      }
+    }
+
+    function copyEmail(btn) {
+      const email = 'the3tstudio@outlook.com';
+      const label = btn.querySelector('span');
+      const icon = btn.querySelector('i');
+
+      const showCopied = () => {
+        label.textContent = 'Copied!';
+        icon.className = 'fa-solid fa-check text-emerald-400';
+        setTimeout(() => {
+          label.textContent = 'Copy';
+          icon.className = 'fa-regular fa-copy text-accent';
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(showCopied).catch(() => {});
+      }
+    }
+  </script>
+</body>
+</html>
